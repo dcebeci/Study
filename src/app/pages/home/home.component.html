@@ -11,20 +11,18 @@
     />
   </div>
 
-  <div *ngIf="loading" class="status">Veriler yükleniyor...</div>
-
-  <div *ngIf="!loading && errorMessage" class="status error">
+  <div *ngIf="errorMessage" class="status error">
     {{ errorMessage }}
   </div>
 
-  <ng-container *ngIf="!loading && !errorMessage">
+  <ng-container *ngIf="!errorMessage">
     <app-card-list
       [items]="(users$ | async) || []"
-       (itemSelected)="navigateToDetail($event)">
+      (itemSelected)="navigateToDetail($event)">
     </app-card-list>
-  </ng-container>
 
-  <ng-container *ngIf="!loading && !(users$ | async)?.length && !errorMessage">
-    <p class="status empty">Hiç kullanıcı bulunamadı.</p>
+    <p class="status empty" *ngIf="(users$ | async)?.length === 0">
+      Hiç kullanıcı bulunamadı.
+    </p>
   </ng-container>
 </div>
