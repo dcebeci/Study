@@ -1,0 +1,37 @@
+<div class="detail-container" *ngIf="!loading; else loadingTpl">
+
+  <ng-container *ngIf="user$ | async as user; else errorTpl">
+    <div class="card">
+      <h2>{{ user.name }}</h2>
+      <p><strong>Kullanıcı Adı:</strong> {{ user.username }}</p>
+      <p><strong>E-posta:</strong> {{ user.email }}</p>
+      <p><strong>Telefon:</strong> {{ user.phone }}</p>
+      <p><strong>Website:</strong> <a href="https://{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+
+      <div class="address">
+        <h4>Adres</h4>
+        <p>
+          {{ user.address.street }}, {{ user.address.suite }},
+          {{ user.address.city }} - {{ user.address.zipcode }}
+        </p>
+      </div>
+
+      <div class="company">
+        <h4>Şirket</h4>
+        <p><strong>{{ user.company.name }}</strong></p>
+        <p><em>"{{ user.company.catchPhrase }}"</em></p>
+      </div>
+
+      <button (click)="goBack()" class="back-btn">← Geri Dön</button>
+    </div>
+  </ng-container>
+
+</div>
+
+<ng-template #loadingTpl>
+  <div class="status">Yükleniyor...</div>
+</ng-template>
+
+<ng-template #errorTpl>
+  <div class="status error">{{ errorMessage }}</div>
+</ng-template>
