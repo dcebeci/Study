@@ -1,16 +1,18 @@
-<ng-container *ngIf="user$ | async as user; else loadingOrError">
-  <section class="user-detail" *ngIf="user; else notFound">
+<ng-container *ngIf="user$ | async as user; else notFound">
+  <section class="user-detail" *ngIf="user">
     <div class="card">
       <h2>{{ user.name }}</h2>
       <p><strong>Kullanıcı Adı:</strong> {{ user.username }}</p>
       <p><strong>E-posta:</strong> {{ user.email }}</p>
       <p><strong>Telefon:</strong> {{ user.phone }}</p>
-      <p><strong>Website:</strong> <a [href]="'https://' + user.website" target="_blank">{{ user.website }}</a></p>
+      <p><strong>Website:</strong> 
+        <a [href]="'https://' + user.website" target="_blank">{{ user.website }}</a>
+      </p>
 
       <div class="address">
         <h3>Adres</h3>
-        <p>{{ user.address.street }}, {{ user.address.suite }}</p>
-        <p>{{ user.address.city }} {{ user.address.zipcode }}</p>
+        <p>{{ user.address.street }}, {{ user.address.suite }} </p>
+        <p>{{ user.address.city }} {{ user.address.zipcode }}, <br> {{ user.address.geo.lat }} {{ user.address.geo.lng }} </p>
       </div>
 
       <div class="company">
@@ -24,11 +26,6 @@
   </section>
 </ng-container>
 
-<ng-template #loadingOrError>
-  <div *ngIf="loading" class="loading-state">Kullanıcı bilgileri yükleniyor...</div>
-  <div *ngIf="errorMessage" class="error-state">{{ errorMessage }}</div>
-</ng-template>
-
 <ng-template #notFound>
-  <div class="error-state">Kullanıcı bulunamadı.</div>
+  <div class="error-state">{{ errorMessage || 'Kullanıcı bulunamadı.' }}</div>
 </ng-template>
