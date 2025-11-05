@@ -15,10 +15,13 @@
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   }
 }
-  .card-one:hover & img { 
+  .card-one:hover{ 
       transform: scale(1.05);
   }
 
+.text {
+  white-space: pre-line;
+}
 
 .card-content {
   display: flex;

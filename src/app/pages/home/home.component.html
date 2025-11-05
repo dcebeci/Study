@@ -1,0 +1,24 @@
+<section class="home-container">
+  <header class="home-header">
+    <h2>Kullanıcı Listesi</h2>
+  </header>
+
+  <div *ngIf="loading" class="loading-state">
+    Veriler yükleniyor...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-state">
+    {{ errorMessage }}
+  </div>
+
+  <ng-container *ngIf="users$ | async as users">
+    <app-card-list
+      [items]="users"
+      (itemSelected)="navigateToDetail($event)">
+    </app-card-list>
+    
+    <div *ngIf="!loading && users.length === 0" class="empty-state">
+      Hiç kullanıcı bulunamadı.
+    </div>
+  </ng-container>
+</section>
