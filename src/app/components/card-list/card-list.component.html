@@ -1,0 +1,10 @@
+<div class="card-list">
+  <app-card-one
+    *ngFor="let item of items"
+    [title]="item.title"
+    [subtitle]="item.subtitle"
+    [text]="item.text"
+    [buttonText]="item.buttonText"
+    (action)="onCardAction(item.id)">
+  </app-card-one>
+</div>
