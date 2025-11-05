@@ -1,37 +1,34 @@
-<div class="detail-container" *ngIf="!loading; else loadingTpl">
-
-  <ng-container *ngIf="user$ | async as user; else errorTpl">
+<ng-container *ngIf="user$ | async as user; else loadingOrError">
+  <section class="user-detail" *ngIf="user; else notFound">
     <div class="card">
       <h2>{{ user.name }}</h2>
       <p><strong>Kullanıcı Adı:</strong> {{ user.username }}</p>
       <p><strong>E-posta:</strong> {{ user.email }}</p>
       <p><strong>Telefon:</strong> {{ user.phone }}</p>
-      <p><strong>Website:</strong> <a href="https://{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+      <p><strong>Website:</strong> <a [href]="'https://' + user.website" target="_blank">{{ user.website }}</a></p>
 
       <div class="address">
-        <h4>Adres</h4>
-        <p>
-          {{ user.address.street }}, {{ user.address.suite }},
-          {{ user.address.city }} - {{ user.address.zipcode }}
-        </p>
+        <h3>Adres</h3>
+        <p>{{ user.address.street }}, {{ user.address.suite }}</p>
+        <p>{{ user.address.city }} {{ user.address.zipcode }}</p>
       </div>
 
       <div class="company">
-        <h4>Şirket</h4>
+        <h3>Şirket Bilgisi</h3>
         <p><strong>{{ user.company.name }}</strong></p>
-        <p><em>"{{ user.company.catchPhrase }}"</em></p>
+        <p><em>{{ user.company.catchPhrase }}</em></p>
       </div>
 
-      <button (click)="goBack()" class="back-btn">← Geri Dön</button>
+      <button class="back-btn" (click)="goBack()">← Geri Dön</button>
     </div>
-  </ng-container>
+  </section>
+</ng-container>
 
-</div>
-
-<ng-template #loadingTpl>
-  <div class="status">Yükleniyor...</div>
+<ng-template #loadingOrError>
+  <div *ngIf="loading" class="loading-state">Kullanıcı bilgileri yükleniyor...</div>
+  <div *ngIf="errorMessage" class="error-state">{{ errorMessage }}</div>
 </ng-template>
 
-<ng-template #errorTpl>
-  <div class="status error">{{ errorMessage }}</div>
+<ng-template #notFound>
+  <div class="error-state">Kullanıcı bulunamadı.</div>
 </ng-template>

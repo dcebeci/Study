@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../models/user.model';
-import { catchError, Observable, of, switchMap } from 'rxjs';
+import { catchError, of, switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,40 +10,36 @@ import { CommonModule } from '@angular/common';
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
 })
-export class UserDetailComponent implements OnInit {
-  
-  user$!: Observable<User | null>;
-  errorMessage = '';
+export class UserDetailComponent {
+
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private userService = inject(UserService);
+
   loading = true;
+  errorMessage: string | null = null;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private userService: UserService
-  ) {}
-
- ngOnInit(): void {
-  this.route.paramMap.subscribe(params => {
-    const idParam = params.get('id');
-    const id = idParam ? parseInt(idParam, 10) : null;
-
-    if (!id) {
-      this.errorMessage = 'Geçersiz kullanıcı ID’si.';
-      this.loading = false;
-      return;
-    }
-
-    this.user$ = this.userService.getUserById(id).pipe(
-      catchError((error) => {
-        this.errorMessage = error.message || 'Kullanıcı bulunamadı.';
+  user$ = this.route.paramMap.pipe(
+    switchMap(params => {
+      const id = Number(params.get('id'));
+      if (!id) {
+        this.errorMessage = 'Geçersiz kullanıcı ID’si.';
         this.loading = false;
         return of(null);
-      })
-    );
+      }
 
-    this.user$.subscribe(() => (this.loading = false));
-  });
-}
+      return this.userService.getUserById(id).pipe(
+        tap(() => (this.loading = false)),
+        catchError(err => {
+          console.error('API Hatası:', err);
+          this.errorMessage = 'Kullanıcı bilgileri alınamadı.';
+          this.loading = false;
+          return of(null);
+        })
+      );
+    })
+  );
+
   goBack(): void {
     this.router.navigate(['/']);
   }
