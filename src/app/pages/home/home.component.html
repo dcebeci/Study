@@ -1,24 +1,30 @@
-<section class="home-container">
-  <header class="home-header">
-    <h2>Kullanıcı Listesi</h2>
-  </header>
+<div class="home-container">
+  <h1 class="page-title">Kullanıcılar</h1>
 
-  <div *ngIf="loading" class="loading-state">
-    Veriler yükleniyor...
+  <div class="search-wrapper">
+    <input
+      type="text"
+      placeholder="İsim ile ara..."
+      [(ngModel)]="searchTerm"
+      (input)="onSearchTermChange(searchTerm)"
+      class="search-input"
+    />
   </div>
 
-  <div *ngIf="errorMessage" class="error-state">
+  <div *ngIf="loading" class="status">Veriler yükleniyor...</div>
+
+  <div *ngIf="!loading && errorMessage" class="status error">
     {{ errorMessage }}
   </div>
 
-  <ng-container *ngIf="users$ | async as users">
+  <ng-container *ngIf="!loading && !errorMessage">
     <app-card-list
-      [items]="users"
-      (itemSelected)="navigateToDetail($event)">
+      [items]="(users$ | async) || []"
+       (itemSelected)="navigateToDetail($event)">
     </app-card-list>
-    
-    <div *ngIf="!loading && users.length === 0" class="empty-state">
-      Hiç kullanıcı bulunamadı.
-    </div>
   </ng-container>
-</section>
+
+  <ng-container *ngIf="!loading && !(users$ | async)?.length && !errorMessage">
+    <p class="status empty">Hiç kullanıcı bulunamadı.</p>
+  </ng-container>
+</div>
