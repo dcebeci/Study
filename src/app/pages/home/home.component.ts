@@ -3,7 +3,7 @@ import { CardListComponent } from '../../components/card-list/card-list.componen
 import { CommonModule } from '@angular/common';
 import { Router} from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { BehaviorSubject, catchError, combineLatest, finalize, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, finalize, map, Observable, of } from 'rxjs';
 import { User } from '../../models/user.model';
 import { CardItem } from '../../models/card-item.model';
 import { FormsModule } from '@angular/forms';
