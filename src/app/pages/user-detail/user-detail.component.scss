@@ -40,7 +40,6 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
- 
 
     i {
       font-size: 4.5rem;
@@ -98,12 +97,21 @@
 
     .geo {
       font-size: 0.85rem;
-      color: #777;
+      color: #5e5e5e;
     }
-
+    .company-name {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
     .catch {
+      font-style: normal;
+    }
+    .company-bs {
+      color: var(--text-muted);
+      font-size: 0.95-9rem;
       font-style: italic;
-      color: #555;
+      line-height: 1.4;
     }
   }
 }
@@ -122,23 +130,25 @@
     cursor: pointer;
     transition: all 0.25s ease;
 
-   i {
-    font-size: 1rem;
-    color: inherit; 
-    position: relative;
-    top: 1px; 
-    transition: transform 0.25s ease, color 0.25s ease;
-  }
-
-  &:hover {
-    background: transparent;
-    color: var(--secondary-color);
-    border-color: var(--secondary-color);
-
     i {
-      color: inherit; 
-      transform: translateX(-10px);
+      font-size: 1rem;
+      color: inherit;
+      position: relative;
+      top: 1px;
+      transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+    }
+
+    &:hover {
+      background: transparent;
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+
+      i {
+        color: inherit;
+        transform: translateX(-10px);
+      }
     }
   }
-}
 }
