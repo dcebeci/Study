@@ -5,6 +5,8 @@ Uygulama, `https://jsonplaceholder.typicode.com/users` API’sinden veri çekere
 Bu proje yalnızca demo ve değerlendirme amaçlıdır.
 
 ---
+<img width="2554" height="1308" alt="image" src="https://github.com/user-attachments/assets/c6a166e8-f945-4130-ae26-47c13bd7390a" />
+
 
 ## 🚀 Özellikler
 
@@ -34,14 +36,33 @@ Bu proje yalnızca demo ve değerlendirme amaçlıdır.
 Projeyi yerel ortamda çalıştırmak için aşağıdaki adımları izleyin:
 
 ### 1️⃣ Repoyu klonlayın
+
 ```bash
 git clone https://github.com/dcebeci/Study.git
+```
 
 ### 2️⃣ Proje dizinine gidin
+
+```bash
 cd Study
+```
 
 ### 3️⃣ Bağımlılıkları yükleyin
+
+```bash
 npm install
+```
+
+> Bu adım, Angular ve Font Awesome dahil tüm bağımlılıkları indirir.
 
 ### 4️⃣ Geliştirme sunucusunu başlatın
+
+```bash
 ng serve
+```
+
+### 5️⃣ Tarayıcıda açın
+
+```bash
+http://localhost:4200
+```
