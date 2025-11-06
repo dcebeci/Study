@@ -13,6 +13,7 @@ export class CardOneComponent {
   @Input() subtitle?: string;
   @Input() text?: string;
   @Input() buttonText?: string;
+  @Input() buttonIcon?: string;
   
   @Output() action = new EventEmitter<void>();
 

@@ -4,4 +4,5 @@ export interface CardItem {
   subtitle?: string;
   text?: string;
   buttonText?: string;
+  buttonIcon?: string;
 }

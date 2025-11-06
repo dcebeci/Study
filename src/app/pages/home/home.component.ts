@@ -73,7 +73,8 @@ export class HomeComponent implements OnInit {
       title: u.name,
       subtitle: u.company?.name ?? '',
       text: `${u.email}\n${u.address?.city ?? ''}`, 
-      buttonText: 'Detay'
+      buttonText: 'Detay',
+      buttonIcon: 'fa-arrow-right'
     };
   }
   navigateToDetail(userId: number): void {
