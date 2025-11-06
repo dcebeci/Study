@@ -125,6 +125,8 @@
    i {
     font-size: 1rem;
     color: inherit; 
+    position: relative;
+    top: 1px; 
     transition: transform 0.25s ease, color 0.25s ease;
   }
 
