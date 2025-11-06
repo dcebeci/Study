@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+:root {
+    /*ASIS Temel renkler*/
+  --primary-color: #1a428a;
+  --primary-color-hover: #2954a3;
+  --bg-color: #f8fafd;
+  --secondary-color:#F7BE00;
+
+    /*  Nötr tonlar */
+  --text-color: #222;
+  --text-muted: #555;
+  --border-color: #e5e7eb;
+  --background-color: #ffffff;
+  --background-light: #f8fafd;
+
+  /* Durum renkleri */
+  --success-color: #27ae60;
+  --error-color: #c0392b;
+  --warning-color: #f39c12;
+
+  /* Gölge renkleri */
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-medium: rgba(26, 66, 138, 0.15);
+}
+
+* {
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  color: #222;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}

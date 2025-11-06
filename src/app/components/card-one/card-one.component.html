@@ -1,13 +1,13 @@
 <div class="card-one">
-
-  <div class="card-content">
+  <div class="card-body">
     <h3 *ngIf="title" class="title">{{ title }}</h3>
     <p *ngIf="subtitle" class="subtitle">{{ subtitle }}</p>
-
     <p *ngIf="text" class="text">{{ text }}</p>
-
-    <button *ngIf="buttonText" class="action-btn" (click)="onActionClick()">
-      {{ buttonText }}
-    </button>
   </div>
-</div>
+  <div class="card-footer">
+      <button *ngIf="buttonText" class="action-btn" (click)="onActionClick()">
+        {{ buttonText }}
+        <i *ngIf="buttonIcon" class="fa-solid" [ngClass]="buttonIcon"></i>
+      </button>
+    </div>
+  </div>

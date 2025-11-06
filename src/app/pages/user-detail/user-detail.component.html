@@ -1,27 +1,47 @@
 <ng-container *ngIf="user$ | async as user; else notFound">
-  <section class="user-detail" *ngIf="user">
-    <div class="card">
-      <h2>{{ user.name }}</h2>
-      <p><strong>Kullanıcı Adı:</strong> {{ user.username }}</p>
-      <p><strong>E-posta:</strong> {{ user.email }}</p>
-      <p><strong>Telefon:</strong> {{ user.phone }}</p>
-      <p><strong>Website:</strong> 
-        <a [href]="'https://' + user.website" target="_blank">{{ user.website }}</a>
-      </p>
+  <section class="user-detail">
+    <div class="user-card">
+      <header class="user-header">
 
-      <div class="address">
-        <h3>Adres</h3>
-        <p>{{ user.address.street }}, {{ user.address.suite }} </p>
-        <p>{{ user.address.city }} {{ user.address.zipcode }}, <br> {{ user.address.geo.lat }} {{ user.address.geo.lng }} </p>
+        <div class="avatar">
+         <i class="fa-solid fa-circle-user"></i>
+        </div>
+
+        <h2 class="user-name">{{ user.name }}</h2>
+        <p class="username">&#64;{{ user.username }}</p>
+      </header>
+
+      <div class="user-info">
+        <div class="info-block">
+          <h3>İletişim Bilgileri</h3>
+          <p><strong>E-posta: </strong> <a [href]="'mailto:' + user.email">{{ user.email }}</a></p>
+          <p><strong>Telefon: </strong> {{ user.phone }}</p>
+          <p><strong>Website: </strong>
+            <a [href]="'https://' + user.website" target="_blank">{{ user.website }}</a>
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>Adres</h3>
+          <p>{{ user.address.street }}, {{ user.address.suite }}</p>
+          <p>{{ user.address.city }} {{ user.address.zipcode }}</p>
+          <p class="geo">
+            Koordinat: {{ user.address.geo.lat }}, {{ user.address.geo.lng }}
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>Şirket Bilgisi</h3>
+          <p class="company-name">{{ user.company.name }}</p>
+          <p class="catch">{{ user.company.catchPhrase }}</p>
+          <p class="company-bs">{{ user.company.bs }}</p>
+        </div>
       </div>
 
-      <div class="company">
-        <h3>Şirket Bilgisi</h3>
-        <p><strong>{{ user.company.name }}</strong></p>
-        <p><em>{{ user.company.catchPhrase }}</em></p>
+      <div class="actions">
+        <button class="back-btn" (click)="goBack()">
+            <i class="fa-solid fa-arrow-left"></i>Geri Dön</button>
       </div>
-
-      <button class="back-btn" (click)="goBack()">← Geri Dön</button>
     </div>
   </section>
 </ng-container>
