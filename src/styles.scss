@@ -1,13 +1,13 @@
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
 :root {
-    /*ASIS Temel renkler*/
+  /* ASIS Temel renkler */
   --primary-color: #1a428a;
   --primary-color-hover: #2954a3;
   --bg-color: #f8fafd;
-  --secondary-color:#F7BE00;
+  --secondary-color: #F7BE00;
 
-    /*  Nötr tonlar */
+  /* Nötr tonlar */
   --text-color: #222;
   --text-muted: #555;
   --border-color: #e5e7eb;
@@ -31,10 +31,45 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: var(--bg-color);
+html, body {
+  height: 100%;
   margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
   padding: 0;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+app-header {
+  flex-shrink: 0;
+}
+
+router-outlet,
+main,
+.layout main {
+  flex: 1 0 auto;
+  display: block;
+}
+
+app-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .layout main {
+    padding-top: 1.5rem;
+  }
 }
