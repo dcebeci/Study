@@ -14,7 +14,7 @@ Bu proje yalnızca demo ve değerlendirme amaçlıdır.
 ✅ İsim bazlı **arama ve filtreleme**  
 ✅ Kullanıcı detay sayfası (`/users/:id`)  
 ✅ Loading ve hata durumları  
-✅ Responsive tasarım (tüm cihazlarda uyumlu)  
+✅ Responsive tasarım   
 ✅ Reusable component yapısı (CardList, CardOne, Loader, Header, Footer) 
 
 ---
