@@ -16,7 +16,6 @@ Bu proje yalnızca demo ve değerlendirme amaçlıdır.
 ✅ Loading ve hata durumları  
 ✅ Responsive tasarım (tüm cihazlarda uyumlu)  
 ✅ Reusable component yapısı (CardList, CardOne, Loader, Header, Footer) 
-✅ Modern UI (ASIS renk paleti + Font Awesome ikonlar)
 
 ---
 
